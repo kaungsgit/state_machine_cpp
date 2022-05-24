@@ -40,11 +40,11 @@ void State::print_name(char* name) {
 	cout << endl;
 }
 
-void State::perform_action() {
-	cout << "Performing state: ";
-	print_name(this->name);
-
-}
+//void State::perform_action() {
+//	cout << "Performing state: ";
+//	print_name(this->name);
+//
+//}
 
 State* State::on_event(char* event) {
 	cout << "Handling event: ";
@@ -52,6 +52,9 @@ State* State::on_event(char* event) {
 	return this;
 
 }
+//void State::perform_action(void) {
+//
+//}
 
 
 // Derived class
@@ -70,7 +73,10 @@ State* Stopped::on_event(char* event) {
 	}
 
 }
-
+void Stopped::perform_action(void) {
+	cout << "Performing state: ";
+	print_name(this->name);
+}
 
 
 Active::Active(char* name) :State(name) {
@@ -87,7 +93,10 @@ State* Active::on_event(char* event) {
 	}
 
 }
-
+void Active::perform_action(void) {
+	cout << "Performing state: ";
+	print_name(this->name);
+}
 
 
 MovingForward::MovingForward(char* name) :State(name) {
@@ -103,4 +112,8 @@ State* MovingForward::on_event(char* event) {
 		return this;
 	}
 
+}
+void MovingForward::perform_action(void) {
+	cout << "Performing state: ";
+	print_name(this->name);
 }
